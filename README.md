@@ -1,39 +1,70 @@
 # Vellum
 
-Vellum is a local-first story harness for entering long novels as a playable character.
+<p align="center">
+  <img src=".github/assets/vellum-banner.svg" alt="Vellum - local-first story harness" width="100%">
+</p>
 
-It turns the “穿书” fantasy into a desktop and Android app: import a novel, choose who you are, step into the current scene, then speak, act, continue, or roll back while the system keeps track of source evidence, memories, and timeline changes.
+<p align="center">
+  <strong>A local-first story harness for entering long novels as a playable character.</strong>
+</p>
 
-Vellum is built around a Codex-style harness rather than a single chat prompt. Each story turn is a recoverable thread of tool calls: retrieve the source text, assemble only the necessary context, draft the next scene, check continuity, update memory, and commit the turn.
+<p align="center">
+  <a href="README.md">English</a>
+  ·
+  <a href="docs/README.zh-CN.md">简体中文</a>
+  ·
+  <a href="docs/README.ja.md">日本語</a>
+  ·
+  <a href="docs/README.ko.md">한국어</a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/wimi321/vellum/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/wimi321/vellum?sort=semver"></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/wimi321/vellum"></a>
+  <img alt="Built with Tauri" src="https://img.shields.io/badge/Tauri-2.x-24c8db">
+  <img alt="Rust" src="https://img.shields.io/badge/Rust-core-b7410e">
+  <img alt="React" src="https://img.shields.io/badge/React-UI-149eca">
+  <img alt="Local first" src="https://img.shields.io/badge/local--first-privacy-2f7d5e">
+</p>
+
+Vellum turns the Chinese "穿书" fantasy into a real desktop and Android app: import a long novel, choose who you are, step into the current scene, then speak, act, continue, inspect source evidence, or roll back a turn.
+
+Unlike a single chat prompt, Vellum is built as a Codex-style harness. Every story turn is a recoverable thread of tool calls: retrieve the book, assemble the minimum context, draft the next scene, check continuity, update memory, record evidence, and commit the turn.
+
+## Download
+
+Android alpha builds are published on the [latest GitHub Release](https://github.com/wimi321/vellum/releases/latest).
+
+- `Vellum-0.1.0-android-universal.apk` is the installable Android package for sideload testing.
+- `Vellum-0.1.0-android-universal.aab` is the Android App Bundle for store-oriented validation.
+- `Vellum-0.1.0-checksums.txt` contains SHA-256 checksums for release assets.
+
+Vellum is still an early alpha. The current release is meant for product validation, import scale testing, and harness-flow testing before production provider credentials and stable signing are finalized.
 
 ## Why Vellum
 
 Most long-novel roleplay systems fail in one of two ways: they upload too much text, or they lose the book as soon as the player starts improvising. Vellum takes a different path.
 
-- **Local first**: books, chunks, search indexes, sessions, evidence, traces, and play history stay on the device.
-- **Built for million-character books**: import is streamed into chapters and chunks instead of sending the whole novel to a model.
-- **Evidence-led play**: every generated scene can expose the source spans that shaped the turn.
-- **Harness, not chat glue**: turns are modeled as stateful tasks with tools, trace, rollback, memory, and continuity checks.
-- **Simple by default**: normal players see “import novel -> choose identity -> start story -> speak / act / continue”.
-- **Desktop and Android**: the same Tauri 2 app targets macOS/desktop and Android, with shared React UI and Rust core.
+| Principle | What it means |
+| --- | --- |
+| Local first | Books, chunks, indexes, sessions, evidence, trace, and play history stay on the device. |
+| Million-character ready | Import streams text into chapters and chunks instead of sending the whole novel to a model. |
+| Evidence-led play | Generated scenes can expose the source spans that shaped the turn. |
+| Harness, not chat glue | Turns are modeled as stateful tasks with tools, trace, rollback, memory, and continuity checks. |
+| Simple by default | Players see "import novel -> choose identity -> start story -> speak / act / continue". |
+| Desktop and Android | One Tauri 2 app targets desktop and Android, with shared React UI and Rust core. |
 
-## Current Status
-
-Vellum is an early, runnable prototype. The architecture, storage layer, import pipeline, harness loop, desktop shell, Android project, and mock model flow are in place. Provider adapters are scaffolded for BYOK use, but production model calls and secure key storage are still V1 roadmap work.
-
-The default development flow uses a local mock model so the app can be tested without sending content to any external service.
-
-## User Flow
+## Experience
 
 1. Import a `.txt`, `.md`, DRM-free `.epub`, or chapter folder.
 2. Vellum streams the text, splits chapters, creates chunks, and builds local search metadata.
 3. Choose an identity: name, role, and intention.
-4. Start a playthrough.
+4. Start a playthrough from the current scene.
 5. Use one of three core actions:
    - **Say** something to a character.
    - **Act** inside the scene.
    - **Continue** the story.
-6. Inspect source evidence, memory, timeline, and the optional harness trace.
+6. Inspect source evidence, memory, timeline, and optional harness trace.
 7. Roll back the latest turn when the story moves in the wrong direction.
 
 ## Architecture
@@ -48,7 +79,7 @@ apps/
   story-tauri/          Tauri 2 + React app for desktop and Android
 ```
 
-### Harness Turn Loop
+### Harness turn loop
 
 ```text
 PlayerAction
@@ -59,7 +90,7 @@ PlayerAction
   -> commit_turn
 ```
 
-Internal tool calls are recorded as trace events, but the UI keeps them folded away unless the player wants to inspect how a turn was produced.
+Internal tool calls are recorded as trace events. The UI keeps them folded away unless the player wants to inspect how a turn was produced.
 
 ## Storage and Privacy
 
@@ -74,7 +105,13 @@ Vellum stores the following locally:
 - harness trace
 - provider profiles
 
-The design rule is simple: **never upload the whole book**. When remote model providers are enabled, only the current turn’s necessary retrieved spans should be sent to the user-selected BYOK provider.
+The design rule is simple: **never upload the whole book**. When remote model providers are enabled, only the current turn's necessary retrieved spans should be sent to the user-selected BYOK provider.
+
+## Current Status
+
+Vellum is an early, runnable prototype. The architecture, storage layer, import pipeline, harness loop, desktop shell, Android project, and mock model flow are in place.
+
+Provider adapters are scaffolded for BYOK use, but production model calls and secure key storage are still V1 roadmap work. The default development flow uses a local mock model so the app can be tested without sending content to any external service.
 
 ## Quick Start
 
@@ -125,6 +162,19 @@ npm run android:build
 
 If Android setup fails because an NDK directory is missing `source.properties`, remove the incomplete NDK directory or reinstall a complete NDK with Android Studio / `sdkmanager`.
 
+## Release Signing
+
+Tauri's Android release output is unsigned by default. To produce an installable sideload APK, provide a local keystore through environment variables and run:
+
+```bash
+VELLUM_ANDROID_KEYSTORE="$HOME/.android/vellum-release.jks" \
+VELLUM_ANDROID_KEYSTORE_PASSWORD="..." \
+VELLUM_ANDROID_KEY_PASSWORD="..." \
+scripts/sign-android-apk.sh
+```
+
+The script aligns, signs, and verifies `dist/release/v0.1.0/Vellum-0.1.0-android-universal.apk`.
+
 ## Validation
 
 The current prototype has been validated with:
@@ -136,21 +186,9 @@ The current prototype has been validated with:
 - macOS Tauri bundle build.
 - Android universal APK and AAB build.
 - APK metadata inspection with `aapt dump badging`.
-- Desktop and mobile viewport Playwright flow tests for import, start, action, evidence, memory, trace, and rollback.
+- APK signing verification with `apksigner verify`.
 
-## Repository Layout
-
-```text
-.
-├── apps/story-tauri
-│   ├── src              React UI
-│   └── src-tauri        Tauri shell, commands, Android project
-├── crates/model-adapters
-├── crates/story-harness-core
-├── crates/story-store
-├── Cargo.toml
-└── package.json
-```
+Android emulator runtime smoke is still tracked separately because the current development machine does not have a usable emulator binary or connected device.
 
 ## Roadmap
 
@@ -161,6 +199,7 @@ The current prototype has been validated with:
 - Character, location, and event extraction passes.
 - Dedicated Android emulator and device smoke tests in CI.
 - More complete continuity checking and world-state diff review.
+- Stable production signing and update channel for Android releases.
 
 ## License
 

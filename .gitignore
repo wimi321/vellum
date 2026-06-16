@@ -1,4 +1,5 @@
 /target
+/dist
 /node_modules
 /apps/story-tauri/node_modules
 /apps/story-tauri/dist

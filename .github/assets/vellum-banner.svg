@@ -1,0 +1,26 @@
+<svg width="1280" height="420" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Vellum</title>
+  <desc id="desc">A calm editorial banner for the Vellum local-first story harness.</desc>
+  <rect width="1280" height="420" fill="#111315"/>
+  <rect x="0" y="0" width="1280" height="420" fill="url(#paper)"/>
+  <path d="M884 74C943 59 1010 68 1067 98C1119 125 1158 169 1167 219C1177 275 1144 328 1094 352C1040 378 971 369 913 344C855 320 807 282 797 230C787 178 824 89 884 74Z" fill="#7C9C80" fill-opacity=".22"/>
+  <path d="M118 337C159 295 199 255 250 243C301 231 362 248 391 287C420 325 417 385 380 405H110C89 390 89 366 118 337Z" fill="#B85C38" fill-opacity=".22"/>
+  <g opacity=".9">
+    <rect x="650" y="86" width="310" height="228" rx="18" fill="#F5EFE3"/>
+    <path d="M805 86V314" stroke="#D1C2AE" stroke-width="2"/>
+    <path d="M690 132H765M690 160H765M690 188H752M690 216H770M840 132H918M840 160H905M840 188H925M840 216H895" stroke="#7B6C5E" stroke-width="9" stroke-linecap="round"/>
+    <path d="M660 94C695 107 748 110 805 94C859 110 915 108 950 94" stroke="#C1AE98" stroke-width="3"/>
+  </g>
+  <g>
+    <text x="88" y="142" fill="#F8F4EA" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="76" font-weight="760" letter-spacing="0">Vellum</text>
+    <text x="92" y="198" fill="#D7CBB8" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="520" letter-spacing="0">Local-first story harness for entering long novels</text>
+    <text x="92" y="248" fill="#AEB9AE" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="22" font-weight="500" letter-spacing="0">Import · Role · Evidence · Memory · Rollback · Android</text>
+  </g>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1280" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17191C"/>
+      <stop offset=".55" stop-color="#22231F"/>
+      <stop offset="1" stop-color="#172121"/>
+    </linearGradient>
+  </defs>
+</svg>
