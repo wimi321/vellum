@@ -1,0 +1,12 @@
+/target
+/node_modules
+/apps/story-tauri/node_modules
+/apps/story-tauri/dist
+/apps/story-tauri/src-tauri/target
+/apps/story-tauri/src-tauri/gen/android/.gradle
+/apps/story-tauri/src-tauri/gen/android/build
+/apps/story-tauri/src-tauri/gen/android/app/build
+/.DS_Store
+/.vite
+/.playwright-cli
+*.log

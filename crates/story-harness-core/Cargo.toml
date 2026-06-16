@@ -1,0 +1,19 @@
+[package]
+name = "story-harness-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+chrono.workspace = true
+model-adapters = { path = "../model-adapters" }
+schemars.workspace = true
+serde.workspace = true
+story-store = { path = "../story-store" }
+tokio.workspace = true
+uuid.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

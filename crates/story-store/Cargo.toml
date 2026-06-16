@@ -1,0 +1,21 @@
+[package]
+name = "story-store"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+chrono.workspace = true
+once_cell.workspace = true
+regex.workspace = true
+rusqlite.workspace = true
+schemars.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+zip.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

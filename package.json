@@ -1,0 +1,23 @@
+{
+  "name": "vellum",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/story-tauri"
+  ],
+  "scripts": {
+    "dev": "npm --workspace apps/story-tauri run dev",
+    "build": "npm --workspace apps/story-tauri run build",
+    "test": "npm --workspace apps/story-tauri run test",
+    "tauri:dev": "npm --workspace apps/story-tauri run tauri:dev",
+    "tauri:build": "npm --workspace apps/story-tauri run tauri:build",
+    "android:init": "npm --workspace apps/story-tauri run android:init",
+    "android:build": "npm --workspace apps/story-tauri run android:build",
+    "android:dev": "npm --workspace apps/story-tauri run android:dev",
+    "check:rust": "cargo test --workspace"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0"
+  }
+}

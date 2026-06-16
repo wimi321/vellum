@@ -1,0 +1,29 @@
+[package]
+name = "story-tauri"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+build = "build.rs"
+
+[lib]
+name = "story_tauri_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "story-tauri"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+anyhow.workspace = true
+model-adapters = { path = "../../../crates/model-adapters" }
+serde.workspace = true
+serde_json.workspace = true
+story-harness-core = { path = "../../../crates/story-harness-core" }
+story-store = { path = "../../../crates/story-store" }
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tokio.workspace = true
